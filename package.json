@@ -1,0 +1,13 @@
+{
+  "name": "PublicTransportAPI",
+  "version": "1.0.0",
+  "description": "Dockerized API for Israeli Public Transport",
+  "author": "Oz Tamir <theoztamir@gmail.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1"
+  }
+}
