@@ -1,5 +1,5 @@
 'use strict';
-
+const config = require('./config');
 const express = require('express');
 
 // Constants
@@ -9,7 +9,8 @@ const HOST = '0.0.0.0';
 // App
 const app = express();
 app.get('/', (req, res) => {
-  res.send('Hello World');
+  res.send('API Token: ' + config.token
+    + '\nAPI Endpoint: ' + config.endpoint);
 });
 
 app.listen(PORT, HOST);
