@@ -21,9 +21,11 @@ app.get('/station/:stationId', (req, res) => {
   });
 });
 
-app.get('/line/:lineId', (req, res) => {
-  const lineId = req.params.lineId;
-  publicTransport.getStationInformation(lineId).then(data => {
+/* Time to Station Endpoint */
+app.get('/tts/:stationId/:lineName', (req, res) => {
+  const stationId = req.params.stationId;
+  const lineName = req.params.lineName;
+  publicTransport.getTimeToStation(stationId, lineName).then(data => {
       res.send(data);
   });
 });
