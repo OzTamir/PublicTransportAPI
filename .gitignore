@@ -74,6 +74,3 @@ typings/
 
 # FuseBox cache
 .fusebox/
-
-# Confgiuration (contains secrets)
-config.js
