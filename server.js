@@ -1,18 +1,6 @@
 'use strict';
-const config = require('./config');
 const express = require('express');
-const got = require('got');
-
-function getStationInformation(stationId) {
-  console.log('getStationInformation:', stationId);  
-  return got(`${config.endpoint}?Key=${config.token}&MonitoringRef=${stationId}`).then(function(response) {
-    const json = JSON.parse(response.body);
-    return JSON.stringify({
-      id: stationId,
-      stops: json["Siri"]["ServiceDelivery"]["StopMonitoringDelivery"][0]["MonitoredStopVisit"]
-    });
-  });
-}
+const publicTransport = require('./public_transport');
 
 // Constants
 const PORT = 8080;
@@ -28,7 +16,14 @@ app.get('/', (req, res) => {
 
 app.get('/station/:stationId', (req, res) => {
   const stationId = req.params.stationId;
-  getStationInformation(stationId).then(data => {
+  publicTransport.getStationInformation(stationId).then(data => {
+      res.send(data);
+  });
+});
+
+app.get('/line/:lineId', (req, res) => {
+  const lineId = req.params.lineId;
+  publicTransport.getStationInformation(lineId).then(data => {
       res.send(data);
   });
 });
